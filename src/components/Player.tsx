@@ -57,8 +57,9 @@ export const Player = () => {
           // Establecer el temporizador de actualización
           updateTimer.current = setInterval(setUpdate, 100);
         })
-        .catch((error) => {
+        .catch(() => {
           // console.error("Error al reproducir la pista:", error);
+          
         });
     }
   };
