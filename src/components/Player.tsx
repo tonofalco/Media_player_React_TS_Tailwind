@@ -14,7 +14,7 @@ export const Player = () => {
   const [seekPosition, setSeekPosition] = useState<number>(0);
   const [currentTime, setCurrentTime] = useState<string>("0:0");
   const [totalDuration, setTotalDuration] = useState("0:0");
-  
+
   const updateTimer = useRef<undefined | number>(undefined);
   const seekSliderRef = useRef<null>(null);
 
@@ -59,7 +59,7 @@ export const Player = () => {
         })
         .catch(() => {
           // console.error("Error al reproducir la pista:", error);
-          
+
         });
     }
   };
@@ -79,23 +79,23 @@ export const Player = () => {
       let newIndex;
 
       if (isRandom) {
-        
+
         newIndex = Math.floor(Math.random() * musicList.length);
 
         while (newIndex === prevIndex && musicList.length > 1) {
           newIndex = Math.floor(Math.random() * musicList.length);
         }
       } else {
-        
+
         newIndex = prevIndex < musicList.length - 1 ? prevIndex + 1 : 0;
       }
 
-      loadTrack(newIndex); 
+      loadTrack(newIndex);
       if (isPlaying) {
-        playTrack();  
+        playTrack();
       }
 
-      return newIndex; 
+      return newIndex;
     });
   };
 
@@ -103,7 +103,7 @@ export const Player = () => {
     setTrackIndex((prevIndex) => {
       const newIndex = prevIndex > 0 ? prevIndex - 1 : musicList.length - 1;
       loadTrack(newIndex);
-      playTrack(); 
+      playTrack();
       return newIndex;
     });
   };
@@ -162,7 +162,7 @@ export const Player = () => {
 
           {/* Detalles de la pista actual */}
           <div className="details">
-            <h2 className="font-bold text-stone-800 bg-stone-200 px-5 py-3 rounded-md">{nowPlaying}</h2>
+            <h2 className="font-bold text-stone-800 bg-stone-200 px-5 py-3 rounded-xl">{nowPlaying}</h2>
             <span
               className={`track-art ${isPlaying ? 'rotate' : ''}`}
               style={{ backgroundImage: `url(${musicList[trackIndex].img})` }}
@@ -219,6 +219,9 @@ export const Player = () => {
               <i className="fa fa-repeat t" title="repeat"></i>
             </div>
           </div>
+
+          <hr className=""/>
+          <footer className=" mt-3 text-center text-sm font-extralight">Developed by Tonof</footer>
 
         </div>
       </div>
